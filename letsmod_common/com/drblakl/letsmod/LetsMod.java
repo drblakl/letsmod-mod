@@ -44,7 +44,6 @@ public class LetsMod {
         /*
          * Init is when turning on
          */
-        proxy.registerRenderers();
     }
     
     @PostInit
