@@ -56,12 +56,55 @@ public class LetsMod {
         
         GameRegistry.addShapelessRecipe(diamondsStack, dirtStack, dirtStack, dirtStack, dirtStack, dirtStack, dirtStack, new ItemStack(Block.sand), gravelStack, cobbleStack);
         
+        // 2 x 2
+        /*
+         * Dirt goes in x
+         * Gravel goes in y
+         * 
+         * xy
+         * yx
+         * 
+         * [Dirt  ][Gravel]
+         * [Gravel][Dirt  ]
+         */
         GameRegistry.addRecipe(new ItemStack(Block.cobblestone), "xy", "yx", 'x', dirtStack, 'y', gravelStack);
         
+        // 3 x 3
+        /*
+         * Dirt goes in x
+         * Gravel goes in y
+         * 
+         * xyx
+         * y y
+         * xyx
+         * 
+         * [Dirt  ][Gravel][Dirt  ]
+         * [Gravel][Empty ][Gravel]
+         * [Dirt  ][Gravel][Dirt  ]
+         */
         GameRegistry.addRecipe(new ItemStack(Block.stone), "xyx", "y y", "xyx", 'x', dirtStack, 'y', gravelStack);
         
+        // 3 x 3
+        /*
+         * Testing output
+         * 
+         * Dirt goes in x
+         * Gravel goes in y
+         * 
+         * xyx
+         * x x
+         * xyx
+         * 
+         * [Dirt  ][Gravel][Dirt  ]
+         * [Dirt  ][Empty ][Dirt  ]
+         * [Dirt  ][Gravel][Dirt  ]
+         */
+        GameRegistry.addRecipe(new ItemStack(Item.eyeOfEnder), "xyx", "x x", "xyx", 'x', dirtStack, 'y', gravelStack);
+        
+        // stone brick created from stone block
         GameRegistry.addSmelting(Block.stone.blockID, new ItemStack(Block.stoneBrick), 0.1f);
         
+        // burning black wool to get white wool
         FurnaceRecipes.smelting().addSmelting(Block.cloth.blockID, 15, new ItemStack(Block.cloth, 1, 0), 0.1f);
     }
     
