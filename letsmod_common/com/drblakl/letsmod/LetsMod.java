@@ -1,5 +1,10 @@
 package com.drblakl.letsmod;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+
 import com.drblakl.letsmod.lib.Reference;
 
 import cpw.mods.fml.common.Mod;
@@ -12,6 +17,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid=Reference.MOD_ID , name=Reference.MOD_NAME, version=Reference.VERSION)
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
@@ -38,6 +44,25 @@ public class LetsMod {
         /*
          * Init is when turning on
          */
+        proxy.registerRenderers();
+        
+        ItemStack dirtStack = new ItemStack(Block.dirt);
+        ItemStack diamondsStack = new ItemStack(Item.diamond, 64);
+        ItemStack blackWoolStack = new ItemStack(Block.cloth, 42, 15);
+        ItemStack gravelStack = new ItemStack(Block.gravel);
+        ItemStack cobbleStack = new ItemStack(Block.cobblestone);
+        
+        GameRegistry.addShapelessRecipe(diamondsStack, dirtStack);
+        
+        GameRegistry.addShapelessRecipe(diamondsStack, dirtStack, dirtStack, dirtStack, dirtStack, dirtStack, dirtStack, new ItemStack(Block.sand), gravelStack, cobbleStack);
+        
+        GameRegistry.addRecipe(new ItemStack(Block.cobblestone), "xy", "yx", 'x', dirtStack, 'y', gravelStack);
+        
+        GameRegistry.addRecipe(new ItemStack(Block.stone), "xyx", "y y", "xyx", 'x', dirtStack, 'y', gravelStack);
+        
+        GameRegistry.addSmelting(Block.stone.blockID, new ItemStack(Block.stoneBrick), 0.1f);
+        
+        FurnaceRecipes.smelting().addSmelting(Block.cloth.blockID, 15, new ItemStack(Block.cloth, 1, 0), 0.1f);
     }
     
     @PostInit
