@@ -1,7 +1,7 @@
 package com.drblakl.letsmod;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import com.drblakl.letsmod.lib.Reference;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -20,5 +20,10 @@ public class GenericItem extends Item {
         setMaxStackSize(maxStackSize);
         setCreativeTab(tab);
         setUnlocalizedName(name);
+    }
+    
+    // Registers Icon to the Mod
+    public void registerIcons(IconRegister par1iconregister){
+        this.itemIcon = par1iconregister.registerIcon(Reference.MOD_ID + ":" + "genericItem");
     }
 }

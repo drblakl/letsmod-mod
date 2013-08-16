@@ -39,9 +39,6 @@ public class LetsMod {
     // Using initial constructor
     private final static Item genericIngot = new GenericItem(5001).setMaxStackSize(16).setUnlocalizedName("genericIngot");
     
-    // Using custom constructor
-    private final static Item genericIngotCustom = new GenericItem(5001, 16, CreativeTabs.tabMisc, 1, "genericIngot");
-    
     // Says where the client and server 'proxy' code is loaded.
     @SidedProxy(clientSide="com.drblakl.letsmod.client.ClientProxy", serverSide="com.drblakl.letsmod.CommonProxy")
     public static CommonProxy proxy;
@@ -142,6 +139,7 @@ public class LetsMod {
          * http://www.minecraftforge.net/wiki/Basic_Items
          */        
         
+        // Can also be done in PreInit()
         LanguageRegistry.addName(genericItem, "Genric Item");
         LanguageRegistry.addName(genericIngot, "Generic Ingot");
         
