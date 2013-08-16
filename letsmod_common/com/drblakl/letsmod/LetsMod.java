@@ -40,7 +40,7 @@ public class LetsMod {
     private final static Item genericIngot = new GenericItem(5001).setMaxStackSize(16).setUnlocalizedName("genericIngot");
     
     // Using custom constructor
-    private final static Item genericIngotCustom = new GenericItem(5001, 16, CreativeTabs.tabMisc, 1, "genericIngot");    
+    private final static Item genericIngotCustom = new GenericItem(5001, 16, CreativeTabs.tabMisc, 1, "genericIngot");
     
     // Says where the client and server 'proxy' code is loaded.
     @SidedProxy(clientSide="com.drblakl.letsmod.client.ClientProxy", serverSide="com.drblakl.letsmod.CommonProxy")
@@ -52,7 +52,7 @@ public class LetsMod {
     public void preInit(FMLPreInitializationEvent event){
         /*
          * PreInit is before turning on
-         */        
+         */
     }
     
     @Init
@@ -149,8 +149,7 @@ public class LetsMod {
          * End Tutorial: 
          * 
          * http://www.minecraftforge.net/wiki/Basic_Items
-         */          
-        
+         */
     }
     
     @PostInit
