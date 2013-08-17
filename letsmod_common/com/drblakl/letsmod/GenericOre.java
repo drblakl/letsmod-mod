@@ -17,6 +17,6 @@ public class GenericOre extends Block {
     }
     
     public int idDropped(int par1, Random random, int zero){
-        return LetsMod.genericIngot.itemID;
+        return LetsMod.genericOre.blockID;
     }
 }

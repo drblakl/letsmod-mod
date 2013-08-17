@@ -182,6 +182,9 @@ public class LetsMod {
          * http://www.minecraftforge.net/wiki/Basic_Blocks
          */     
         
+        // Added in smelting for Generic Ingot
+        FurnaceRecipes.smelting().addSmelting(genericOre.blockID, new ItemStack(genericIngot, 1), 0.1f);        
+        
         proxy.registerRenderers();        
     }
     
