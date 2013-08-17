@@ -1,10 +1,12 @@
 package com.drblakl.letsmod;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.common.MinecraftForge;
 
 import com.drblakl.letsmod.lib.Reference;
 
@@ -37,13 +39,19 @@ public class LetsMod {
     int MyItemID = genericItem.itemID;
     
     // Using initial constructor
-    private final static Item genericIngot = new GenericItem(5001).setMaxStackSize(16).setUnlocalizedName("genericIngot");
+    public final static Item genericIngot = new GenericItem(5001).setMaxStackSize(16).setUnlocalizedName("genericIngot");
+    
+    public final static Block genericDirt = new GenericBlock(500, Material.ground).
+            setHardness(0.5F).
+            setStepSound(Block.soundGravelFootstep).
+            setUnlocalizedName("genericDirt").
+            setCreativeTab(CreativeTabs.tabBlock);
+    
+    public final static Block genericOre = new GenericOre(501, Material.rock);
     
     // Says where the client and server 'proxy' code is loaded.
     @SidedProxy(clientSide="com.drblakl.letsmod.client.ClientProxy", serverSide="com.drblakl.letsmod.CommonProxy")
     public static CommonProxy proxy;
-
-    
     
     @PreInit
     public void preInit(FMLPreInitializationEvent event){
@@ -63,11 +71,9 @@ public class LetsMod {
          * 
          * http://www.minecraftforge.net/wiki/Crafting_and_Smelting#Shaped_Crafting
          */
-        proxy.registerRenderers();
         
         ItemStack dirtStack = new ItemStack(Block.dirt);
         ItemStack diamondsStack = new ItemStack(Item.diamond, 64);
-        ItemStack blackWoolStack = new ItemStack(Block.cloth, 42, 15);
         ItemStack gravelStack = new ItemStack(Block.gravel);
         ItemStack cobbleStack = new ItemStack(Block.cobblestone);
         
@@ -148,6 +154,35 @@ public class LetsMod {
          * 
          * http://www.minecraftforge.net/wiki/Basic_Items
          */
+        
+        /*
+         * Start Tutorial:
+         * 
+         * http://www.minecraftforge.net/wiki/Basic_Blocks
+         */
+        
+        /*
+         * Dirt
+         */
+        GameRegistry.registerBlock(genericDirt, "genericDirt");
+        LanguageRegistry.addName(genericDirt, "Generic Dirt");
+        MinecraftForge.setBlockHarvestLevel(genericDirt, "shovel", 0);
+        
+        
+        /*
+         * Ore
+         */
+        GameRegistry.registerBlock(genericOre, "genericOre");
+        LanguageRegistry.addName(genericOre, "Generic Ore");
+        MinecraftForge.setBlockHarvestLevel(genericOre, "pickaxe",  3);
+        
+        /*
+         * End Tutorial:
+         * 
+         * http://www.minecraftforge.net/wiki/Basic_Blocks
+         */     
+        
+        proxy.registerRenderers();        
     }
     
     @PostInit

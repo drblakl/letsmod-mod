@@ -1,8 +1,5 @@
 package com.drblakl.letsmod;
 
-import com.drblakl.letsmod.lib.Reference;
-
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -23,7 +20,12 @@ public class GenericItem extends Item {
     }
     
     // Registers Icon to the Mod
+    /*
+     * Only use if you want all created items including ingots to have same icon
+     */
+    /*
     public void registerIcons(IconRegister par1iconregister){
-        this.itemIcon = par1iconregister.registerIcon(Reference.MOD_ID + ":" + "genericItem");
+        this.itemIcon = par1iconregister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + "genericItem");
     }
+    */
 }
