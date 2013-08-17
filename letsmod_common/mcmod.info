@@ -8,10 +8,11 @@
   "updateUrl": "",
   "authorList": [
     "drblakl",
-    "pahimar"
+    "pahimar",
+    "havvy"
   ],
-  "credits": "By drblakl, based on LetsMod by pahimar",
-  "logoFile": "",
+  "credits": "drblakl, based on Let's Mod by pahimar",
+  "logoFile": "/textures/logo/logo.png",
   "screenshots": [
   ],
   "parent":"",
