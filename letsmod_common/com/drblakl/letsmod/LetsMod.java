@@ -183,7 +183,7 @@ public class LetsMod {
          */     
         
         // Added in smelting for Generic Ingot
-        FurnaceRecipes.smelting().addSmelting(genericOre.blockID, new ItemStack(genericIngot, 1), 0.1f);        
+        FurnaceRecipes.smelting().addSmelting(genericOre.blockID, new ItemStack(genericIngot, 1), 0.1f);    
         
         proxy.registerRenderers();        
     }
