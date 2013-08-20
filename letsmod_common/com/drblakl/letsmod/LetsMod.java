@@ -49,6 +49,18 @@ public class LetsMod {
     
     public final static Block genericOre = new GenericOre(501, Material.rock);
     
+    // Tutorial: http://www.minecraftforge.net/wiki/Metadata_Based_Subblocks
+    public static final int multiBlockId = 502;
+    public static final Block multiBlock = new MultiBlock(multiBlockId);
+    
+    private static final String[] multiBlockNames = { 
+        "White Block", "Orange Block", "Magenta Block", "Light Blue Block",
+        "Yellow Block", "Light Green Block", "Pink Block", "Dark Grey Block",
+        "Light Grey Block", "Cyan Block", "Purple Block", "Blue Block",
+        "Brown Block", "Green Block", "Red Block", "Black Block"
+    };    
+    
+    
     // Says where the client and server 'proxy' code is loaded.
     @SidedProxy(clientSide="com.drblakl.letsmod.client.ClientProxy", serverSide="com.drblakl.letsmod.CommonProxy")
     public static CommonProxy proxy;
@@ -185,7 +197,29 @@ public class LetsMod {
         // Added in smelting for Generic Ingot
         FurnaceRecipes.smelting().addSmelting(genericOre.blockID, new ItemStack(genericIngot, 1), 0.1f);    
         
-        proxy.registerRenderers();        
+        proxy.registerRenderers();
+        
+        /*
+         * Start Tutorial:
+         * 
+         * http://www.minecraftforge.net/wiki/Metadata_Based_Subblocks
+         */
+        
+        GameRegistry.registerBlock(multiBlock, MultiItemBlock.class);
+        
+        for (int ix = 0; ix < 16; ix++) {
+            ItemStack cloth = new ItemStack(Block.cloth, 1, ix);
+            ItemStack multiBlockStack = new ItemStack(multiBlock, 1, ix);
+            
+            GameRegistry.addShapelessRecipe(multiBlockStack, cloth, cloth);
+            LanguageRegistry.addName(multiBlockStack, multiBlockNames[multiBlockStack.getItemDamage()]);
+        }
+        
+        /*
+         * End Tutorial:
+         * 
+         * http://www.minecraftforge.net/wiki/Metadata_Based_Subblocks
+         */        
     }
     
     @PostInit
