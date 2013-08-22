@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
@@ -59,6 +60,15 @@ public class LetsMod {
         "Light Grey Block", "Cyan Block", "Purple Block", "Blue Block",
         "Brown Block", "Green Block", "Red Block", "Black Block"
     };    
+
+    
+    public static final Block tomatoCrop = new TomatoCrop(504);
+    
+    // Tutorial: http://www.minecraftforge.net/wiki/Plants
+    public static final ItemSeeds tomatoSeeds = (ItemSeeds) new ItemSeeds(5002, tomatoCrop.blockID, Block.tilledField.blockID);
+    
+    public static final Item tomatoFruit = new GenericItem(5003);
+
     
     
     // Says where the client and server 'proxy' code is loaded.
@@ -74,6 +84,7 @@ public class LetsMod {
     
     @Init
     public void init(FMLInitializationEvent event){
+        proxy.registerRenderers();
         /*
          * Init is when turning on
          */
@@ -196,8 +207,7 @@ public class LetsMod {
         
         // Added in smelting for Generic Ingot
         FurnaceRecipes.smelting().addSmelting(genericOre.blockID, new ItemStack(genericIngot, 1), 0.1f);    
-        
-        proxy.registerRenderers();
+      
         
         /*
          * Start Tutorial:
@@ -219,7 +229,28 @@ public class LetsMod {
          * End Tutorial:
          * 
          * http://www.minecraftforge.net/wiki/Metadata_Based_Subblocks
+         */
+        
+        /*
+         * Start 
+         * 
+         * http://www.minecraftforge.net/wiki/Plants
+         */
+        LanguageRegistry.addName(tomatoSeeds, "Tomato Seeds");
+        MinecraftForge.addGrassSeed(new ItemStack(tomatoSeeds), 10);        
+        
+        LanguageRegistry.addName(tomatoFruit, "Tomato");
+        GameRegistry.addShapelessRecipe(new ItemStack(tomatoSeeds, 4),  new ItemStack(tomatoFruit));
+        
+        GameRegistry.registerBlock(tomatoCrop, "tomatoCrop");        
+        
+        
+        /*
+         * End
+         * 
+         * http://www.minecraftforge.net/wiki/Plants
          */        
+        
     }
     
     @PostInit

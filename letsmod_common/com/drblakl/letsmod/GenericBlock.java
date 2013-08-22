@@ -11,5 +11,6 @@ public class GenericBlock extends Block {
 
     public GenericBlock(int id, int i, Material plants) {
         // TODO Auto-generated constructor stub
+        super(id, plants);
     }
 }

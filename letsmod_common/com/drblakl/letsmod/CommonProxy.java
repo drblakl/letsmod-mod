@@ -3,6 +3,7 @@ package com.drblakl.letsmod;
 public class CommonProxy {
 
     public static final String BLOCK_PNG = null;
+    public static final String ITEMS_PNG = null;
 
     // Client stuff
     public void registerRenderers() {
