@@ -7,6 +7,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.stats.Achievement;
+import net.minecraftforge.common.AchievementPage;
+import net.minecraft.stats.Achievement;
+import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.drblakl.letsmod.lib.Reference;
@@ -30,6 +34,7 @@ public class LetsMod {
 
     @Instance("LetsMod")
     public static LetsMod instance;
+       
 
     /*
      * Item Creation
@@ -68,9 +73,7 @@ public class LetsMod {
     public static final ItemSeeds tomatoSeeds = (ItemSeeds) new ItemSeeds(5002, tomatoCrop.blockID, Block.tilledField.blockID);
     
     public static final Item tomatoFruit = new GenericItem(5003);
-
-    
-    
+  
     // Says where the client and server 'proxy' code is loaded.
     @SidedProxy(clientSide="com.drblakl.letsmod.client.ClientProxy", serverSide="com.drblakl.letsmod.CommonProxy")
     public static CommonProxy proxy;
@@ -250,6 +253,13 @@ public class LetsMod {
          * 
          * http://www.minecraftforge.net/wiki/Plants
          */        
+        
+        /*
+         * Achievements
+         */
+        LanguageRegistry.instance().addStringLocalization("achievement.LetsMod", "en_US", "Made Generic Ingot!");
+        LanguageRegistry.instance().addStringLocalization("achievement.LetsMod.desc", "en_US", "You built a Generic Ingot!");
+        
         
     }
     
